@@ -1,0 +1,163 @@
+<div class="app" #root="$implicit" dir="ltr" [ngClass]="{'app-dark': dark, 'boxed': boxed, 'collapsed-sidebar': collapseSidebar, 'compact-sidebar': compactSidebar, 'customizer-in': customizerIn}">
+    <md-sidenav-container class="gene-container">
+        <md-sidenav #sidenav [mode]="sidenavMode" [opened]="sidenavOpen" class="sidebar-area">
+            <div class="sidebar-panel gene-sidenav" fxLayout="column">
+
+                <div class="sidebar-container">
+                    <div class="gene-user-thumb text-center">
+                        <img class="img-responsive img-circle" src="assets/img/pro-thumb.jpg" width="107" height="107" alt="user list image">
+                        <span class="gene-user-name gene-block">Valon Xhafa</span>
+                    </div>
+                    <div class="sidenav-scrollbar-container" fxLayout="column">
+                        <perfect-scrollbar>
+                            <md-nav-list fxLayout="column" menuToggleDirective class="navigation">
+
+                                <md-divider></md-divider>
+
+                                <md-list-item menuToggleLink *ngFor="let menuitem of menuItems.getAll()">
+
+                                    <a menuToggle class="gene-relative" md-ripple [routerLink]="['/', menuitem.state]" routerLinkActive="active-link" *ngIf="menuitem.type === 'link'">
+                                        <md-icon>{{ menuitem.icon }}</md-icon>
+                                        <span>{{ menuitem.name | translate }}</span>
+                                    </a>
+                                    <a menuToggle class="gene-relative" md-ripple href="javascript:;" *ngIf="menuitem.type === 'sub'">
+                                        <md-icon>{{ menuitem.icon }}</md-icon>
+                                        <span>{{ menuitem.name | translate }}</span>
+                                        <span fxFlex></span>
+                                        <md-icon class="menu-caret">chevron_right</md-icon>
+                                    </a>
+                                    <md-nav-list class="sub-menu" *ngIf="menuitem.type === 'sub'">
+                                        <md-list-item *ngFor="let childitem of menuitem.children" routerLinkActive="open">
+                                            <a [routerLink]="['/', menuitem.state, childitem.state ]" routerLinkActive="active-link" class="gene-relative" md-ripple>{{ childitem.name | translate }}</a>
+                                        </md-list-item>
+                                    </md-nav-list>
+                                </md-list-item>
+
+
+                                <md-divider></md-divider>
+
+                            </md-nav-list>
+                        </perfect-scrollbar>
+                    </div>
+                </div>
+            </div>
+        </md-sidenav>
+        <md-toolbar class="gene-header-toolbar">
+            <div class="gene-ham-icon" tourAnchor="start.tour" >
+                <button class="" md-mini-fab color="primary" md-card-icon (click)="sidenav.toggle()">
+        <md-icon>menu</md-icon>
+      </button>
+            </div>
+            <a class="navbar-brand" href="#">{{header}}</a>
+
+            <span fxFlex></span>
+
+        <div class="secondary-menu">
+            <button fxHide="true" fxHide.gt-sm="false" md-button class="fullscreen-toggle" (click)="toggleFullscreen()" tourAnchor="tour-full-screen">
+            <md-icon *ngIf="!isFullscreen">fullscreen</md-icon>
+            <md-icon *ngIf="isFullscreen">fullscreen_exit</md-icon>
+        </button>
+
+
+            <button (click)="end.toggle()" md-icon-button class="ml-xs overflow-visible">
+                <md-icon>notifications</md-icon>
+            </button>
+
+            <button class="user-button" md-button [mdMenuTriggerFor]="menu">
+                <div fxLayout="row" fxLayoutAlign="center center">
+                    <md-icon>account_circle</md-icon>
+                </div>
+            </button>
+
+        </div>
+        </md-toolbar>
+        <md-sidenav #end align="end" class="chat-panel" mode="over" opened="false">
+          <div class="scroll">
+             <md-toolbar class="mat-blue-800">
+             <h3 >Notifications</h3>
+           </md-toolbar>
+            <md-nav-list>
+
+
+                <md-list-item>
+                    <md-icon md-list-avatar class="mat-text-primary">check_circle</md-icon>
+                    <h4 md-line>New prediction of overdue customers is available</h4>
+                </md-list-item>
+
+              <md-list-item>
+                <md-icon md-list-avatar class="mat-text-primary">system_update</md-icon>
+                <h4 md-line>Updates</h4>
+                <p md-line>New Updates are available</p>
+              </md-list-item>
+
+
+
+
+            </md-nav-list>
+          </div>
+    </md-sidenav>
+        <div class="gene-base-container" #scrollContainer>
+           <div class="inner-container">
+            <router-outlet (activate)="onActivate($event, scrollContainer)"></router-outlet>
+            <tour-step-template>
+              <ng-template let-step="step">
+                <div (click)="$event.stopPropagation()" class="popover bs-popover-bottom">
+                  <div class="popover-header">
+
+                  </div>
+                  <div class="popover-body">
+                    <p class="tour-step-content">
+
+                    </p>
+                  </div>
+                  <div class="tour-step-navigation">
+                    <button md-icon-button [disabled]="!tourService.hasPrev(step)" (click)="tourService.prev()">
+                      <md-icon>chevron_left</md-icon>
+                    </button>
+                    <button md-icon-button [disabled]="!tourService.hasNext(step)" (click)="tourService.next()">
+                      <md-icon>chevron_right</md-icon>
+                    </button>
+                    <button md-button (click)="tourService.end()">End</button>
+                  </div>
+                </div>
+              </ng-template>
+            </tour-step-template>
+            </div>
+        </div>
+    </md-sidenav-container>
+
+
+    <!-- /Demo Purposes Only -->
+</div>
+<md-menu class="user-menu" x-position="before" y-position="below" #menu="mdMenu">
+
+    <md-divider></md-divider>
+    <button (click)="logout()" md-menu-item>
+    <md-icon>exit_to_app</md-icon>
+    <span>Logout</span>
+  </button>
+</md-menu>
+
+<md-menu class="apps-menu" x-position="after" y-position="below" #appsmenu="mdMenu">
+    <button md-menu-item>
+		<md-icon>storage</md-icon>
+		<span>Total App Memory</span>
+	</button>
+    <button md-menu-item>
+		<md-icon>memory</md-icon>
+		<span>Total Memory Used</span>
+	</button>
+    
+    <button md-menu-item>
+		<md-icon>mail</md-icon>
+		<span>12 Unread Mail</span>
+	</button>
+	   <button md-menu-item>
+		<md-icon>feedback</md-icon>
+		<span>2 Feedback</span>
+	</button>
+	
+</md-menu>
+
+
+   

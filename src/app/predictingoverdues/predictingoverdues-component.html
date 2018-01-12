@@ -1,0 +1,77 @@
+<div fxLayout="row" fxLayoutWrap="wrap" fxLayoutAlign="start" *ngIf="!this.overdueData==[]">
+
+    <div fxFlex="100%" fxFlex.md="49.5%" fxFlex.sm="100%" fxFlex.gt-md>
+        <md-card>
+            <ms-pie-chart [data]="this.overdueData[0]['overdueratio']" title="Overdue ration" textColor="#222328"></ms-pie-chart>
+        </md-card>
+    </div>
+
+    <!-- Stacked bar -->
+    <div fxFlex.gt-sm="33.33" fxFlex.gt-xs="50" fxFlex="100">
+        <md-card>
+            <div class="gene-card-title">
+                <div fxLayout="row" fxLayoutAlign="start center">
+                    <div fxLayout="column">
+                        <h4>Predicted Overdues</h4></div> <span fxFlex></span>
+                    <button md-icon-button >
+                        <md-icon>sync</md-icon>
+                    </button>
+                    <button md-icon-button [mdMenuTriggerFor]="menuopt">
+                        <md-icon>more_horiz</md-icon>
+                    </button>
+                </div>
+                <md-divider></md-divider>
+            </div>
+            <div class="gene-card-content">
+                <canvas height="200" baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barStackChartOptions" [colors]="barChartColors" [legend]="barChartLegend" [chartType]="barChartType"></canvas>
+            </div>
+        </md-card>
+    </div>
+
+    <div fxFlex.gt-sm="33.33" fxFlex.gt-xs="50" fxFlex="100">
+        <md-card>
+            <div class="gene-card-title">
+                <div fxLayout="row" fxLayoutAlign="start center">
+                    <div fxLayout="column">
+                        <h4>Overdue Prediction per Month</h4></div> <span fxFlex></span>
+                    <button md-icon-button>
+                        <md-icon>sync</md-icon>
+                    </button>
+                    <button md-icon-button [mdMenuTriggerFor]="menuopt">
+                        <md-icon>more_horiz</md-icon>
+                    </button>
+                </div>
+                <md-divider></md-divider>
+            </div>
+            <div class="gene-card-content">
+                <canvas baseChart height="200" [datasets]="mixedPointChartData" [labels]="lineChartLabels" [options]="mixedChartOptions" [colors]="barChartColors" [legend]="lineChartLegend" [chartType]="barChartType"></canvas>
+            </div>
+        </md-card>
+    </div>
+
+
+
+
+
+
+
+    <div fxFlex="100">
+     <div class="pad-all-md mat-white box-inset mrgn-b-sm">
+      <md-input-container class="full-wid">
+         <input mdInput type="text" placeholder='Type to filter the name column...' (keyup)='updateFilter($event)' /> </md-input-container>
+      </div>
+      <ngx-datatable #table class='material' [columns]="columns" [columnMode]="'force'" [headerHeight]="50" [footerHeight]="50" [rowHeight]="'auto'" [limit]="10" [rows]='rows'> </ngx-datatable>
+   </div>
+</div>
+
+
+<md-menu #menuopt="mdMenu" x-position="before">
+    <button md-menu-item>
+        <md-icon>settings</md-icon> Settings </button>
+    <button md-menu-item>
+        <md-icon>more</md-icon> View More </button>
+    <button md-menu-item>
+        <md-icon>notifications_off</md-icon> Disable notifications </button>
+    <button md-menu-item>
+        <md-icon>exit_to_app</md-icon> Remove Panel </button>
+</md-menu>

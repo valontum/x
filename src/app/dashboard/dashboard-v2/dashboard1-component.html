@@ -1,0 +1,102 @@
+
+
+<div fxLayout="row" fxLayoutWrap="wrap" fxLayoutAlign="start">
+
+
+    <div fxFlex="100%" fxFlex.md="49.5%" fxFlex.sm="100%" fxFlex.gt-md>
+        <md-card>
+            <ms-pie-chart [data]="pieChartDemoData" title="Overdue Ratio" textColor="#222328"></ms-pie-chart>
+        </md-card>
+    </div>
+
+
+    <div fxFlex="100%" fxFlex.md="49.5%" fxFlex.sm="100%" fxFlex.gt-md>
+        <div>
+            <md-card>
+                <div class="gene-card-title">
+                    <div fxLayout="row" fxLayoutAlign="start center">
+                        <div fxLayout="column">
+                            <h4>Completed Transactions</h4>
+                        </div> <span fxFlex></span>
+                        <button md-icon-button>
+                     <md-icon>sync</md-icon>
+                  </button>
+                        <button md-icon-button [mdMenuTriggerFor]="options">
+                     <md-icon>more_horiz</md-icon>
+                  </button>
+                    </div>
+                    <md-divider></md-divider>
+                </div>
+                <div class="gene-card-content">
+                    <div fxLayout="row" fxLayoutAlign="start center">
+                        <div fxLayout="column">
+                            <div class="gene-relative gene-easy-pie"><span class="gene-absolute font-bold">40%</span>
+                                <easy-pie-chart [percent]="percent1" [options]="options1"></easy-pie-chart>
+                            </div>
+                        </div>
+                        <div class="mrgn-l-md">
+                            <h3>4,216/10,540</h3>
+                            <p class="mat-text-warn gene-text-xl">-2% Than last year</p>
+                        </div>
+                    </div>
+                </div>
+            </md-card>
+        </div>
+        <div>
+            <md-card>
+                <div class="gene-card-title">
+                    <div fxLayout="row" fxLayoutAlign="start center">
+                        <div fxLayout="column">
+                            <h4>Positive Comments</h4>
+                        </div> <span fxFlex></span>
+                        <button md-icon-button>
+                     <md-icon>sync</md-icon>
+                  </button>
+                        <button md-icon-button [mdMenuTriggerFor]="options">
+                     <md-icon>more_horiz</md-icon>
+                  </button>
+                    </div>
+                    <md-divider></md-divider>
+                </div>
+                <div class="gene-card-content">
+                    <div fxLayout="row" fxLayoutAlign="start center">
+                        <div fxLayout="column">
+                            <div class="gene-relative gene-easy-pie"><span class="gene-absolute font-bold">68%</span>
+                                <easy-pie-chart [percent]="percent2" [options]="options2"></easy-pie-chart>
+                            </div>
+                        </div>
+                        <div class="mrgn-l-md">
+                            <h2>45,815 Comments</h2>
+                            <p class="gene-text-xl">+2.5% Than last year</p>
+                        </div>
+                    </div>
+                </div>
+            </md-card>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+    <div fxFlex.gt-sm="100" fxFlex="100">
+        <ms-stacked-area-chart fxFlex="100%" [data]="stackedAreaChartData" [options]="stackedAreaChartOptions"></ms-stacked-area-chart>
+    </div>
+
+
+</div>
+
+<md-menu #options="mdMenu" x-position="before">
+    <button md-menu-item>
+         <md-icon>settings</md-icon> Settings </button>
+    <button md-menu-item>
+         <md-icon>more</md-icon> View More </button>
+    <button md-menu-item>
+         <md-icon>notifications_off</md-icon> Disable notifications </button>
+    <button md-menu-item>
+         <md-icon>exit_to_app</md-icon> Remove Panel </button>
+</md-menu>
