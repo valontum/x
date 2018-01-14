@@ -99,6 +99,7 @@ selectNodeVersion () {
 # ----------
 
 echo Handling node.js deployment.
+
 # 1. KuduSync
 if [[ "$IN_PLACE_DEPLOYMENT" -ne "1" ]]; then
   "$KUDU_SYNC_CMD" -v 50 -f "$DEPLOYMENT_SOURCE" -t "$DEPLOYMENT_TARGET" -n "$NEXT_MANIFEST_PATH" -p "$PREVIOUS_MANIFEST_PATH" -i ".git;.hg;.deployment;deploy.sh"
@@ -124,6 +125,7 @@ if [ -e "$DEPLOYMENT_TARGET/.angular-cli.json" ]; then
   exitWithMessageOnError "Angular build failed"
   cd - > /dev/null
 fi
+
 
 
 ##################################################################################################################################
