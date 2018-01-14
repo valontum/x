@@ -16,7 +16,9 @@ export class LoginComponent {
   password: string;
 
 
-  private moreInfo: string;
+  public moreInfo: string;
+
+
   private routeData = null;
   private status = {1: 'Incorrect Email or Password', 2 :  'User doesn\'t exist!', 3 : 'Success'};
   constructor(

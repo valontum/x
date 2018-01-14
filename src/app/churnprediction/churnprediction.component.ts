@@ -29,7 +29,7 @@ export class ChurnPredictionComponent implements OnInit {
     stackedAreaChartOptions;
     stackedAreaChartData;
 
-    private churnData = null;
+    public churnData = null;
 
 
 

@@ -26,7 +26,7 @@ export class PredictingOverduesComponent implements OnInit {
       ];
 
 
-    private overdueData = null;
+    public overdueData = null;
     public mixedChartLabels:Array<any> = ['1', '2', '3', '4', '5', '6', '7'];
     public mixedChartLegend:boolean = false;
 
@@ -171,7 +171,7 @@ export class PredictingOverduesComponent implements OnInit {
 
         // filter our data
         const temp = this.temp.filter(function(d) {
-          return d.name.toLowerCase().indexOf(val) !== -1 || !val;
+          return (d.name.toLowerCase().indexOf(val) !== -1);
         });
 
         // update the rows
