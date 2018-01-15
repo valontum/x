@@ -5,8 +5,8 @@
 
                 <div class="sidebar-container">
                     <div class="gene-user-thumb text-center">
-                        <img class="img-responsive img-circle" src="assets/img/pro-thumb.jpg" width="107" height="107" alt="user list image">
-                        <span class="gene-user-name gene-block">Valon Xhafa</span>
+                        <img class="img-responsive img-circle" [src]='getImage()' width="107" height="107" alt="user list image">
+                        <span class="gene-user-name gene-block">{{getName()}}</span>
                     </div>
                     <div class="sidenav-scrollbar-container" fxLayout="column">
                         <perfect-scrollbar>

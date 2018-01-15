@@ -10,6 +10,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 export class AuthService {
 
 
+    public user;
 
 
     constructor(private _http: HttpClient, private router: Router)  {
@@ -19,7 +20,10 @@ export class AuthService {
 
     login(data) {
 
+        this.user = data["user"];
         window.localStorage.setItem('auth_key', data["user"].token);
+        window.localStorage.setItem('id', data["user"].id);
+        window.localStorage.setItem('name', data["user"].name);
         this.isloggedIn  = true;
 
     }
@@ -27,7 +31,10 @@ export class AuthService {
     logout()
     {
         window.localStorage.removeItem('auth_key');
+        window.localStorage.removeItem('name');
+        window.localStorage.removeItem('id');
         this.isloggedIn = false;
+        this.user = null;
         this.router.navigateByUrl('/login');
 
 
@@ -72,6 +79,16 @@ export class AuthService {
     public getToken()
     {
         return window.localStorage.getItem('auth_key');
+    }
+
+    public getName()
+    {
+        return window.localStorage.getItem('name');
+    }
+
+    public getId()
+    {
+        return window.localStorage.getItem('id');
     }
 
     getRedirectUrl(): string {

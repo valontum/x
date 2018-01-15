@@ -175,6 +175,14 @@ export class MainComponent implements OnInit, OnDestroy{
         }
     }
 
+    getName(){
+        return this.authService.getName();
+    }
+
+    getImage(){
+        return "assets/img/"+this.authService.getId()+".jpg";
+    }
+
 	toggleFullscreen() {
     	if (screenfull.enabled) {
     		screenfull.toggle();
