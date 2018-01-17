@@ -3,6 +3,7 @@ import {pieChartDemoData, lineChartDemoDataGenerator} from "../../data/widgetDem
 import { stackedAreaChartData } from "../../data/stackedAreaChart.data";
 import { PageTitleService } from '../../core/page-title/page-title.service';
 import {fadeInAnimation} from "../../core/route-animation/route.animation";
+import {Overduepredictionservice} from '../../services/overduepredictionservice/overduepredictionservice';
 
 @Component({
   selector: 'ms-dashboard1',
@@ -26,7 +27,8 @@ export class DashboardOneComponent implements OnInit  {
   options2: any;
   rows = [];
 
-  constructor(private pageTitleService: PageTitleService) {
+  public overdueData = null;
+  constructor(private pageTitleService: PageTitleService, private overduepredictionservice:Overduepredictionservice) {
      this.percent1 = 40;
      this.options1 = {
          barColor: '#E53935',
@@ -57,6 +59,36 @@ export class DashboardOneComponent implements OnInit  {
              enabled: true
          }
      };
+
+
+     this.overduepredictionservice.getOverduePredictionData().subscribe((data) => {
+
+
+
+
+
+      this.overdueData = data;
+
+      this.barChartLabels = this.overdueData[0]['predictedoverdues']['labels'];
+      this.barChartData =   [
+          {data: this.overdueData[0]['predictedoverdues']['data'], label: 'Overdues in %'}
+
+      ];
+
+      this.rows  = this.overdueData[0]['overduelist'];
+
+      this.mixedPointChartData =  [{
+          data: this.overdueData[0]['overduepredictionpermonth'],
+          label: 'Series A',
+          borderWidth: 1,
+          type: 'line',
+          fill: false
+      }];
+
+
+  });
+
+
   }
   ngOnInit() {
     this.pageTitleService.setTitle("Dashboard");

@@ -1,11 +1,11 @@
 
 
-<div fxLayout="row" fxLayoutWrap="wrap" fxLayoutAlign="start">
+<div fxLayout="row" fxLayoutWrap="wrap" fxLayoutAlign="start"  *ngIf="this.overdueData != null">
 
 
     <div fxFlex="100%" fxFlex.md="49.5%" fxFlex.sm="100%" fxFlex.gt-md>
         <md-card>
-            <ms-pie-chart [data]="pieChartDemoData" title="Overdue Ratio" textColor="#222328"></ms-pie-chart>
+            <ms-pie-chart [data]="this.overdueData[0]['overdueratio']" title="Subsecription/Churn Ration" textColor="#222328"></ms-pie-chart>
         </md-card>
     </div>
 
@@ -16,7 +16,7 @@
                 <div class="gene-card-title">
                     <div fxLayout="row" fxLayoutAlign="start center">
                         <div fxLayout="column">
-                            <h4>Completed Transactions</h4>
+                            <h4>Negative Comments</h4>
                         </div> <span fxFlex></span>
                         <button md-icon-button>
                      <md-icon>sync</md-icon>
@@ -35,7 +35,7 @@
                             </div>
                         </div>
                         <div class="mrgn-l-md">
-                            <h3>4,216/10,540</h3>
+                            <h3>54</h3>
                             <p class="mat-text-warn gene-text-xl">-2% Than last year</p>
                         </div>
                     </div>
@@ -66,8 +66,8 @@
                             </div>
                         </div>
                         <div class="mrgn-l-md">
-                            <h2>45,815 Comments</h2>
-                            <p class="gene-text-xl">+2.5% Than last year</p>
+                            <h2>815 Comments</h2>
+                            <p class="gene-text-xl">-65% Than last year</p>
                         </div>
                     </div>
                 </div>
@@ -83,9 +83,7 @@
 
 
 
-    <div fxFlex.gt-sm="100" fxFlex="100">
-        <ms-stacked-area-chart fxFlex="100%" [data]="stackedAreaChartData" [options]="stackedAreaChartOptions"></ms-stacked-area-chart>
-    </div>
+    
 
 
 </div>

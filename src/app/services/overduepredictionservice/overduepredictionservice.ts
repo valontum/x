@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {Observable} from "rxjs/Observable";
 import {ReplaySubject} from "rxjs/ReplaySubject";
+import {environment} from '../../../environments/environment';
 
 
 
@@ -36,7 +37,7 @@ export class Overduepredictionservice {
     private fetch() {
    
         this.overdueData = this.dataSubject.asObservable();
-        this._http.get('http://localhost:3000/api/overdueinfo').subscribe(res => this.dataSubject.next(res));
+        this._http.get(environment.address+'/overdueinfo').subscribe(res => this.dataSubject.next(res));
     }
 
 

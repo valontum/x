@@ -136,6 +136,48 @@ mongodb.collection("churnprediction").find({userid : 12345678},{_id: 0,userid : 
 });
 
 
+router.get('/readerchurninfo',auth, (req, res, next) => {
+
+
+
+
+
+
+    mongodb.collection("readerchurn").find({userid : 12345678},{_id: 0,userid : 0}).toArray(function (err, result) {
+        if (err) throw err;
+    
+    
+    
+        
+        res.json(result);
+    
+    });
+    
+    
+});
+
+
+router.get('/transactionslist',auth, (req, res, next) => {
+
+
+
+
+
+
+    mongodb.collection("transactions").find({userid : 12345678},{_id: 0,userid : 0}).toArray(function (err, result) {
+        if (err) throw err;
+    
+    
+    
+        
+        res.json(result);
+    
+    });
+    
+    
+});
+
+
 
 router.get('/overdueinfo',auth, (req, res, next) => {
 

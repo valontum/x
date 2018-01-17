@@ -62,6 +62,8 @@ import {BadDebtPredictionComponent} from './bad debt prediction/baddebtpredictio
 import {ChurnPredictionComponent} from './churnprediction/churnprediction.component';
 import {NewPredictionComponent} from './newprediction/newprediction.component';
 import { AuthGuardService } from './services/auth/authcheck';
+import {ReaderChurnComponent} from './readerchurn/readerchurn.component';
+
 
 const appRoutes: Routes = [
 	{	
@@ -93,7 +95,8 @@ const appRoutes: Routes = [
             { path: 'editor/ckeditor', component: Ckeditor },
             { path: 'icons', component: MaterialIconComponent },
             { path: 'transactions', component: TransactionsComponent },
-            { path: 'predictingoverdues', component: PredictingOverduesComponent },
+			{ path: 'predictingsubscriptions', component: PredictingOverduesComponent },
+			{ path: 'readerchurn', component: ReaderChurnComponent },
             { path: 'newprediction', component: NewPredictionComponent },
             { path: 'baddebtprediction', component: BadDebtPredictionComponent },
             { path: 'churnprediction', component: ChurnPredictionComponent },

@@ -21,7 +21,7 @@ export class PredictingOverduesComponent implements OnInit {
       columns = [
           { name: 'transactionid' },
         { prop: 'name' },
-        { name: 'Company' }
+        { name: 'gender' }
 
       ];
 
@@ -113,7 +113,7 @@ export class PredictingOverduesComponent implements OnInit {
       }
 
       ngOnInit() {
-        this.pageTitleService.setTitle("Predicting Overdues");
+        this.pageTitleService.setTitle("Subscription Prediction");
         this.pieChartDemoData = pieChartDemoData;
       }
 

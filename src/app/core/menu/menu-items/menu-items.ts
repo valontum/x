@@ -21,37 +21,43 @@ const MENUITEMS = [
     type: 'link',
     icon: 'explore'
   },
-    {
-        state: 'newprediction',
-        name: 'New Prediction',
-        type: 'link',
-        icon: 'functions'
-    },
+    //{
+     //   state: 'newprediction',
+     //   name: 'New Prediction',
+     //   type: 'link',
+    //    icon: 'functions'
+   // },
     {
         state: 'transactions',
-        name: 'Transactions',
+        name: 'Subscriptions',
         type: 'link',
         icon: 'list'
     },
     {
-        state: 'predictingoverdues',
-        name: 'Overdue Prediction',
+        state: 'predictingsubscriptions',
+        name: 'Subscription Prediction',
         type: 'link',
         icon: 'equalizer'
     },
 
-    {
-        state: 'baddebtprediction',
-        name: 'Bad Debt Prediction',
-        type: 'link',
-        icon: 'show_chart'
-    },
+   // {
+   //     state: 'baddebtprediction',
+   //     name: 'Bad Debt Prediction',
+   //     type: 'link',
+   //     icon: 'show_chart'
+   // },
     {
         state: 'churnprediction',
-        name: 'Customer Churn Prediction',
+        name: 'Subscription Churn Prediction',
         type: 'link',
         icon: 'arrow_drop_down_circle'
-    }
+    },
+      {
+        state: 'readerchurn',
+       name: 'Reader Churn',
+       type: 'link',
+       icon: 'show_chart'
+    },
 
 
 

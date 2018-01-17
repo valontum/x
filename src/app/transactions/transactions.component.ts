@@ -1,6 +1,7 @@
 import { Component, ViewChild, OnInit ,ViewEncapsulation } from '@angular/core';
 import { PageTitleService } from '../core/page-title/page-title.service';
 import {fadeInAnimation} from "../core/route-animation/route.animation";
+import { TransactionsListService } from 'app/services/transactionslist/transactionslist';
 
 @Component({
     selector: 'ms-transactions',
@@ -19,34 +20,34 @@ export class TransactionsComponent implements OnInit {
       columns = [
           { name: 'transactionid' },
         { prop: 'name' },
-        { name: 'Company' }
+        { name: 'gender' }
 
       ];
 
-      constructor(private pageTitleService: PageTitleService) {
-        this.fetch((data) => {
-          // cache our list
-          this.temp = [...data];
 
-          // push our inital complete list
-          this.rows = data;
-        });
+
+      constructor(private pageTitleService: PageTitleService, private transactionsListService: TransactionsListService) {
+        this.transactionsListService.getChurnData().subscribe((data) => {
+
+
+
+
+
+         
+          this.rows  = data[0]['list'];
+
+
+
+
+      });
+       
       }
 
       ngOnInit() {
         this.pageTitleService.setTitle("Transactions");
       }
 
-      fetch(cb) {
-        const req = new XMLHttpRequest();
-        req.open('GET', `assets/data/company.json`);
-
-        req.onload = () => {
-          cb(JSON.parse(req.response));
-        };
-
-        req.send();
-      }
+    
 
       updateFilter(event) {
         const val = event.target.value;

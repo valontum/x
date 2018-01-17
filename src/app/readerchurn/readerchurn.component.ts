@@ -3,19 +3,19 @@ import { PageTitleService } from '../core/page-title/page-title.service';
 import {fadeInAnimation} from '../core/route-animation/route.animation';
 import { stackedAreaChartData } from '../data/stackedAreaChart.data';
 import {churnPredictionBasedOnCompanies} from '../data/widgetDemoData.data';
-import {ChurnPredictionService} from '../services/churnpredictionservices/churnpredictionservice';
+import {ReaderChurnService} from '../services/readerchurn/readerchurnservice'
 
 @Component({
-    selector: 'ms-churnprediction',
-    templateUrl:'./churnprediction-component.html',
-    styleUrls: ['./churnprediction-component.scss'],
+    selector: 'ms-readerchurn',
+    templateUrl:'./readerchurn-component.html',
+    styleUrls: ['./readerchurn-component.scss'],
     encapsulation: ViewEncapsulation.None,
     host: {
         "[@fadeInAnimation]": 'true'
     },
     animations: [ fadeInAnimation ]
 })
-export class ChurnPredictionComponent implements OnInit {
+export class ReaderChurnComponent implements OnInit {
 
       rows = [];
       temp = [];
@@ -84,16 +84,15 @@ export class ChurnPredictionComponent implements OnInit {
         }
     };
 
-      constructor(private pageTitleService: PageTitleService, private churnPredictionService: ChurnPredictionService) {
-
-     
-            
+      constructor(private pageTitleService: PageTitleService, private readerChurnService: ReaderChurnService) {
 
 
 
 
 
-          this.churnPredictionService.getChurnPredictionData().subscribe((data) => {
+
+
+          this.readerChurnService.getChurnData().subscribe((data) => {
 
 
 
@@ -132,7 +131,8 @@ export class ChurnPredictionComponent implements OnInit {
 
       }
 
-    
+     
+
       updateFilter(event) {
         const val = event.target.value;
 

@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {Headers} from '@angular/http';
 import {ActivatedRoute, Router} from "@angular/router";
+import {environment} from '../../../environments/environment';
 
 
 
@@ -40,12 +41,12 @@ export class AuthService {
 
     }
 
-    authenticated(email: string, password: string){
+    authenticated(email: string, password: string){     
 
 
 
 
-        return this._http.post('http://localhost:3000/api/authenticate', {'password':password, 'email':email});
+        return this._http.post(environment.address+'/authenticate', {'password':password, 'email':email});
     }
 
 

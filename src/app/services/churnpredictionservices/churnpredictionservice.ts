@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {Observable} from "rxjs/Observable";
 import {ReplaySubject} from "rxjs/ReplaySubject";
+import {environment} from '../../../environments/environment';
 
 
 
@@ -36,7 +37,7 @@ export class ChurnPredictionService {
     private fetch() {
 
         this.churnData = this.dataSubject.asObservable();
-        this._http.get('http://localhost:3000/api/churninfo').subscribe(res => this.dataSubject.next(res));
+        this._http.get(environment.address+'/churninfo').subscribe(res => this.dataSubject.next(res));
     }
 
 

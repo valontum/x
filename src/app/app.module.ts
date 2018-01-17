@@ -121,6 +121,9 @@ import {Overduepredictionservice} from './services/overduepredictionservice/over
 import {BadDeptPredictionService} from './services/baddeptpredictionservice/baddeptpredictionservice';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { AuthInterceptor } from './services/auth/token.interceptor';
+import { ReaderChurnComponent } from 'app/readerchurn/readerchurn.component';
+import { ReaderChurnService } from 'app/services/readerchurn/readerchurnservice';
+import {TransactionsListService} from './services/transactionslist/transactionslist';
 
 
 
@@ -174,6 +177,7 @@ const sortablejsConfig: SortablejsOptions = {
 		}),
 	],
 	declarations: [
+
 		GeneAppComponent, 
 		MainComponent,
         DashboardComponent,
@@ -232,7 +236,7 @@ const sortablejsConfig: SortablejsOptions = {
         PricingComponent,
 		BlankComponent,
         UserProfileComponent,
-        
+        ReaderChurnComponent,
         LoginComponent,
         RegisterComponent,
         ForgotPasswordComponent,
@@ -253,7 +257,9 @@ const sortablejsConfig: SortablejsOptions = {
             provide: HTTP_INTERCEPTORS,
             useClass: AuthInterceptor,
             multi: true
-        },
+		},
+		TransactionsListService,
+		ReaderChurnService,
         BadDeptPredictionService,
         Overduepredictionservice,
 		ChurnPredictionService,

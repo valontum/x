@@ -7,9 +7,8 @@ import {environment} from '../../../environments/environment';
 
 
 
-
 @Injectable()
-export class BadDeptPredictionService {
+export class TransactionsListService {
 
 
 
@@ -17,7 +16,7 @@ export class BadDeptPredictionService {
 
     private dataSubject = new ReplaySubject<any>(1);
 
-    private baddeptData: Observable<any> = null;
+    private churnData: Observable<any> = null;
 
 
 
@@ -35,21 +34,21 @@ export class BadDeptPredictionService {
     }
 
     private fetch() {
-   
-        this.baddeptData = this.dataSubject.asObservable();
-        this._http.get(environment.address+'/baddebtinfo').subscribe(res => this.dataSubject.next(res));
+
+        this.churnData = this.dataSubject.asObservable();
+        this._http.get(environment.address+'/transactionslist').subscribe(res => this.dataSubject.next(res));
     }
 
 
 
-    getBadDebtPredictionData()    {
+    getChurnData()    {
 
-        if(this.baddeptData == null)
+        if(this.churnData == null)
         {
             this.fetch();
         }
 
-        return  this.baddeptData;
+        return  this.churnData;
 
     }
 
