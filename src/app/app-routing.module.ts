@@ -63,6 +63,7 @@ import {ChurnPredictionComponent} from './churnprediction/churnprediction.compon
 import {NewPredictionComponent} from './newprediction/newprediction.component';
 import { AuthGuardService } from './services/auth/authcheck';
 import {ReaderChurnComponent} from './readerchurn/readerchurn.component';
+import {ResultsComponent} from './results/results.component';
 
 
 const appRoutes: Routes = [
@@ -89,7 +90,7 @@ const appRoutes: Routes = [
             { path: 'dashboard', component: DashboardOneComponent },
             { path: 'file-manager', component: FileManagerComponent },
             { path: 'inbox', component: InboxComponent },
-
+			{ path: 'results', component: ResultsComponent },
             { path: 'calendar', component: CalendarComponent },
             { path: 'editor/wysiwyg', component: EditorComponent },
             { path: 'editor/ckeditor', component: Ckeditor },
@@ -141,7 +142,8 @@ const appRoutes: Routes = [
             { path: 'pages/blank', component: BlankComponent },
             { path: 'users/userprofile', component: UserProfileComponent },
             { path: 'users/userlist', component: UserListComponent },
-			{ path: '', component: DashboardComponent }
+			{ path: '', component: DashboardOneComponent },
+			{ path: 'dashboard1', component: DashboardComponent }
 	 	]
   	}
 ];

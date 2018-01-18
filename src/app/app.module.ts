@@ -124,6 +124,7 @@ import { AuthInterceptor } from './services/auth/token.interceptor';
 import { ReaderChurnComponent } from 'app/readerchurn/readerchurn.component';
 import { ReaderChurnService } from 'app/services/readerchurn/readerchurnservice';
 import {TransactionsListService} from './services/transactionslist/transactionslist';
+import {ResultsComponent} from './results/results.component';
 
 
 
@@ -177,7 +178,7 @@ const sortablejsConfig: SortablejsOptions = {
 		}),
 	],
 	declarations: [
-
+		ResultsComponent,
 		GeneAppComponent, 
 		MainComponent,
         DashboardComponent,

@@ -19,7 +19,7 @@ const MENUITEMS = [
     state: 'dashboard',
     name: 'DASHBOARD',
     type: 'link',
-    icon: 'explore'
+    icon: 'dashboard'
   },
     //{
      //   state: 'newprediction',
@@ -56,8 +56,13 @@ const MENUITEMS = [
         state: 'readerchurn',
        name: 'Reader Churn',
        type: 'link',
-       icon: 'show_chart'
-    },
+       icon: 'trending_down'
+    }
+ // {  state: 'results',
+  // name: 'Results',
+  // type: 'link',
+  // icon: 'attach_money'
+//}
 
 
 

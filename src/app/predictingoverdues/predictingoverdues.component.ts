@@ -90,7 +90,7 @@ export class PredictingOverduesComponent implements OnInit {
 
             this.barChartLabels = this.overdueData[0]['predictedoverdues']['labels'];
             this.barChartData =   [
-                {data: this.overdueData[0]['predictedoverdues']['data'], label: 'Overdues in %'}
+                {data: this.overdueData[0]['predictedoverdues']['data'], label: 'Predicted Subscription '}
 
             ];
 

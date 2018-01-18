@@ -5,7 +5,7 @@
 
     <div fxFlex="100%" fxFlex.md="49.5%" fxFlex.sm="100%" fxFlex.gt-md>
         <md-card>
-            <ms-pie-chart [data]="this.overdueData[0]['overdueratio']" title="Subsecription/Churn Ration" textColor="#222328"></ms-pie-chart>
+            <ms-pie-chart [data]="this.overdueData[0]['overdueratio']" title="Subscription/Churn Ratio" textColor="#222328"></ms-pie-chart>
         </md-card>
     </div>
 
@@ -74,19 +74,91 @@
             </md-card>
         </div>
     </div>
+</div>
+
+    <div fxLayout="row" fxLayoutWrap="wrap" fxLayoutAlign="start"  *ngIf="this.overdueData != null">  
+    <div fxFlex.gt-sm="33.33" fxFlex.gt-xs="100" fxFlex="100">
+        <md-card>
+            <div class="gene-card-title">
+                <div fxLayout="row" fxLayoutAlign="start center">
+                    <div fxLayout="column">
+                        <h4>Emails Content</h4>
+                    </div> <span fxFlex></span>
+                    <button md-icon-button>
+                  <md-icon>sync</md-icon>
+               </button>
+                    <button md-icon-button [mdMenuTriggerFor]="options">
+                  <md-icon>more_horiz</md-icon>
+               </button>
+                </div>
+                <md-divider></md-divider>
+            </div>
+            <div class="gene-card-content">
+                <div fxLayout="row" fxLayoutAlign="start start">
+                    <p>Subscription</p><span fxFlex></span>
+                    <div>
+                        <md-icon class="text-alert">arrow_drop_up</md-icon><span class="gene-span mrgn-l-xs">30%</span></div>
+                </div>
+                <md-progress-bar mode="determinate" value="30" class="gene-progess-md" color="primary"></md-progress-bar>
+                <div fxLayout="row" fxLayoutAlign="start start">
+                    <p>Offene Stellen</p><span fxFlex></span>
+                    <div>
+                        <md-icon class="text-danger">arrow_drop_down</md-icon><span class="gene-span mrgn-l-xs">20%</span></div>
+                </div>
+                <md-progress-bar mode="determinate" value="20" class="gene-progess-md" color="warn"></md-progress-bar>
+                <div fxLayout="row" fxLayoutAlign="start start">
+                    <p>Neues Koalitions-Thema</p><span fxFlex></span>
+                    <div>
+                        <md-icon class="text-alert">arrow_drop_up</md-icon><span class="gene-span mrgn-l-xs">60</span></div>
+                </div>
+                <md-progress-bar mode="determinate" value="60" class="gene-progess-md" color="accent"></md-progress-bar>
+                <div fxLayout="row" fxLayoutAlign="start start">
+                    <p>Mobile Application</p><span fxFlex></span>
+                    <div>
+                        <md-icon class="text-alert">arrow_drop_up</md-icon><span class="gene-span mrgn-l-xs">70%</span></div>
+                </div>
+                <md-progress-bar mode="determinate" value="30" class="gene-progess-md mat-cyan" color="primary"></md-progress-bar>
+                <div fxLayout="row" fxLayoutAlign="start start">
+                    <p>Newsletter</p><span fxFlex></span>
+                    <div>
+                        <md-icon class="text-alert">arrow_drop_down</md-icon><span class="gene-span mrgn-l-xs">85%</span></div>
+                </div>
+                <md-progress-bar mode="determinate" value="30" class="gene-progess-md mat-blue-800"  color="warn"></md-progress-bar>
+            </div>
+        </md-card>
+    </div>
+
+    <div fxFlex.gt-sm="33.33"  fxFlex.gt-xs="100" fxFlex="100">
+        <md-card>
+            <div class="gene-card-title">
+                <div fxLayout="row" fxLayoutAlign="start center">
+                    <div fxLayout="column">
+                        <h4>Predicted Conversion Statistics</h4>
+                    </div> <span fxFlex></span>
+                    <button md-icon-button>
+                  <md-icon>sync</md-icon>
+               </button>
+                    <button md-icon-button [mdMenuTriggerFor]="options">
+                  <md-icon>more_horiz</md-icon>
+               </button>
+                </div>
+                <md-divider></md-divider>
+            </div>
+            <div class="gene-card-content">
+                <canvas baseChart height="245" [data]="doughnutChartData" [labels]="doughnutChartLabels" [options]="doughnutChartOptions" [colors]="doughnutChartColors" [chartType]="doughnutChartType"></canvas>
+            </div>
+        </md-card>
+    </div>
 
 
-
-
-
-
+</div>
 
 
 
     
 
 
-</div>
+
 
 <md-menu #options="mdMenu" x-position="before">
     <button md-menu-item>

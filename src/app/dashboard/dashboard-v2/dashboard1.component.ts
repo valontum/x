@@ -60,6 +60,8 @@ export class DashboardOneComponent implements OnInit  {
          }
      };
 
+     
+
 
      this.overduepredictionservice.getOverduePredictionData().subscribe((data) => {
 
@@ -125,6 +127,42 @@ export class DashboardOneComponent implements OnInit  {
       }]
     }
   };
+
+  public doughnutChartLabels:string[] = ['Direct Contacted', 'Converted'];
+	public doughnutChartData:number[] = [77, 23 ];
+	public doughnutChartType:string = 'doughnut';
+  doughnutChartColors: any[] = [{
+    backgroundColor: ['red','blue' ]
+  }];
+	public doughnutChartOptions: any = {
+    responsive: true,
+    elements: {
+      arc: {
+        borderWidth: 0
+      }
+   	},
+   	legend: {
+      position: 'bottom',
+      labels: {
+       usePointStyle: true,
+      }
+    }
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   public barChartLabels:string[] = ['Safari', 'Chrome', 'Opera', 'IE+', 'Firefox'];
   public barChartType:string = 'bar';
   public barChartLegend:boolean = false;

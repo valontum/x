@@ -44,7 +44,7 @@ export class TransactionsComponent implements OnInit {
       }
 
       ngOnInit() {
-        this.pageTitleService.setTitle("Transactions");
+        this.pageTitleService.setTitle("Subscriptions");
       }
 
     
