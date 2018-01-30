@@ -158,7 +158,11 @@ export class MainComponent implements OnInit, OnDestroy{
 
     ngOnDestroy() {
         this._router.unsubscribe();
-        this._mediaSubscription.unsubscribe();
+        
+        if(this._mediaSubscription)
+        {
+            this._mediaSubscription.unsubscribe();
+        }
     }
 
 	isFullscreen: boolean = false;
