@@ -27,12 +27,12 @@ const MENUITEMS = [
      //   type: 'link',
     //    icon: 'functions'
    // },
-   {
-    state: 'nlp',
-    name: 'NLP',
-    type: 'link',
-    icon: 'arrow_drop_down_circle'
-},
+  // {
+   // state: 'nlp',
+   // name: 'NLP',
+   // type: 'link',
+    //icon: 'texture'
+//},
     {
         state: 'transactions',
         name: 'Subscriptions',

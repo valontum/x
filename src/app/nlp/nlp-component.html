@@ -23,13 +23,26 @@
 
    <div fxFlex="100">
         <div class="gene-welcome-note pad-wrap">
-                <h2 class="ng-tns-c10-3">Shortlisted leads</h2>
-                <p class="ng-tns-c10-3">Below is the ranked list of users according to likelihood to leave reading</p>
+                <h2 class="ng-tns-c10-3">Opinion Search</h2>
+                <p class="ng-tns-c10-3">Search opinions towards a specific entity/keyword.</p>
             </div>
      <div class="pad-all-md mat-white box-inset mrgn-b-sm">
       <md-input-container class="full-wid">
          <input mdInput type="text" placeholder='Type to filter the name column...' (keyup)='updateFilter($event)' /> </md-input-container>
-      </div>
+         <div class="gene-card-content">
+            <p class="mrgn-b-lg">Select buttons allow the user to select one option from a set</p>
+            <form>
+                <md-select placeholder="Favorite food" [(ngModel)]="selectedValue" name="food">
+                    <md-option *ngFor="let food of foods" [value]="food.value">
+                        {{food.viewValue}}
+                    </md-option>
+                </md-select>
+                <p> Selected value: {{selectedValue}} </p>
+            </form>
+        </div>
+      
+      
+        </div>
       <ngx-datatable #table class='material' [columns]="columns" [columnMode]="'force'" [headerHeight]="50" [footerHeight]="50" [rowHeight]="'auto'" [limit]="10" [rows]="rows"> </ngx-datatable>
    </div>
 </div>
