@@ -101,6 +101,8 @@ export class ReaderChurnComponent implements OnInit {
               this.churnData = data;
               this.rows  = data[0]['churnlist'];
 
+              this.temp = data[0]['churnlist']
+
               this.mixedPointChartData = [{
                   data: this.churnData[0]['churnmumberduringmonths'],
                   label: 'Series A',

@@ -27,6 +27,12 @@ const MENUITEMS = [
      //   type: 'link',
     //    icon: 'functions'
    // },
+   {
+    state: 'nlp',
+    name: 'NLP',
+    type: 'link',
+    icon: 'arrow_drop_down_circle'
+},
     {
         state: 'transactions',
         name: 'Subscriptions',
@@ -52,6 +58,8 @@ const MENUITEMS = [
         type: 'link',
         icon: 'arrow_drop_down_circle'
     },
+
+   
       {
         state: 'readerchurn',
        name: 'Reader Churn',

@@ -24,6 +24,7 @@ import {NewPredictionComponent} from './newprediction/newprediction.component';
 import { AuthGuardService } from './services/auth/authcheck';
 import {ReaderChurnComponent} from './readerchurn/readerchurn.component';
 import {ResultsComponent} from './results/results.component';
+import { NLPComponent } from 'app/nlp/nlp.component';
 
 
 const appRoutes: Routes = [
@@ -51,7 +52,7 @@ const appRoutes: Routes = [
         
 			{ path: 'results', component: ResultsComponent },
           
-           
+            { path: 'nlp', component: NLPComponent },
             { path: 'transactions', component: TransactionsComponent },
 			{ path: 'predictingsubscriptions', component: PredictingOverduesComponent },
 			{ path: 'readerchurn', component: ReaderChurnComponent },

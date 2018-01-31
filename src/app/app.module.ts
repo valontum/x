@@ -77,7 +77,7 @@ import { ReaderChurnComponent } from 'app/readerchurn/readerchurn.component';
 import { ReaderChurnService } from 'app/services/readerchurn/readerchurnservice';
 import {TransactionsListService} from './services/transactionslist/transactionslist';
 import {ResultsComponent} from './results/results.component';
-
+import {NLPComponent} from './nlp/nlp.component';
 
 
 export function createTranslateLoader(http: Http) {
@@ -137,7 +137,7 @@ const sortablejsConfig: SortablejsOptions = {
         DashboardOneComponent,
         InboxComponent,
         InboxComposeComponent,
-       
+		NLPComponent,
 		PredictingOverduesComponent,
         BadDebtPredictionComponent,
         ChurnPredictionComponent,

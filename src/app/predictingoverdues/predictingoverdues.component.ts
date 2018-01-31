@@ -96,6 +96,9 @@ export class PredictingOverduesComponent implements OnInit {
 
             this.rows  = this.overdueData[0]['overduelist'];
 
+
+            this.temp = data[0]['overduelist'];
+
             this.mixedPointChartData =  [{
                 data: this.overdueData[0]['overduepredictionpermonth'],
                 label: 'Series A',

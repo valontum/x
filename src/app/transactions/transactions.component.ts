@@ -35,6 +35,7 @@ export class TransactionsComponent implements OnInit {
 
          
           this.rows  = data[0]['list'];
+          this.temp  = data[0]['list'];
 
 
 

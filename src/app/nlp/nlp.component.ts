@@ -3,26 +3,28 @@ import { PageTitleService } from '../core/page-title/page-title.service';
 import {fadeInAnimation} from '../core/route-animation/route.animation';
 import { stackedAreaChartData } from '../data/stackedAreaChart.data';
 import {churnPredictionBasedOnCompanies} from '../data/widgetDemoData.data';
-import {ChurnPredictionService} from '../services/churnpredictionservices/churnpredictionservice';
+import {ReaderChurnService} from '../services/readerchurn/readerchurnservice'
+import { HttpClient } from '@angular/common/http';
+
 
 @Component({
-    selector: 'ms-churnprediction',
-    templateUrl:'./churnprediction-component.html',
-    styleUrls: ['./churnprediction-component.scss'],
+    selector: 'ms-nlp',
+    templateUrl:'./nlp-component.html',
+    styleUrls: ['./nlp-component.scss'],
     encapsulation: ViewEncapsulation.None,
     host: {
         "[@fadeInAnimation]": 'true'
     },
     animations: [ fadeInAnimation ]
 })
-export class ChurnPredictionComponent implements OnInit {
+export class NLPComponent implements OnInit {
 
       rows = [];
       temp = [];
       columns = [
-          { name: 'transactionid' },
-        { prop: 'name' },
-        { name: 'gender' }
+          { name: 'opinion' }
+        
+        
 
       ];
     pieChartDemoData;
@@ -31,6 +33,7 @@ export class ChurnPredictionComponent implements OnInit {
 
     public churnData = null;
 
+    public percentage = [];
 
 
     //Mixed Chart
@@ -84,25 +87,34 @@ export class ChurnPredictionComponent implements OnInit {
         }
     };
 
-      constructor(private pageTitleService: PageTitleService, private churnPredictionService: ChurnPredictionService) {
-
-     
-            
+      constructor(private pageTitleService: PageTitleService, private readerChurnService: ReaderChurnService, private _http: HttpClient) {
 
 
 
+        this.percentage = [
+            {
+                "label": "Pro",
+                "value": 17
+            },
+            {
+                "label": "Contra",
+                "value": 21
+            }
+        ];
 
 
-          this.churnPredictionService.getChurnPredictionData().subscribe((data) => {
+
+
+          this.readerChurnService.getChurnData().subscribe((data) => {
 
 
 
 
 
               this.churnData = data;
-              this.rows  = data[0]['churnlist'];
+              //this.rows  = data[0]['churnlist'];
 
-              this.temp = data[0]['churnlist']
+              //this.temp = data[0]['churnlist']
 
               this.mixedPointChartData = [{
                   data: this.churnData[0]['churnmumberduringmonths'],
@@ -122,7 +134,7 @@ export class ChurnPredictionComponent implements OnInit {
       }
 
       ngOnInit() {
-        this.pageTitleService.setTitle("Churn Predicition");
+        this.pageTitleService.setTitle("NLP Analysis");
           this.stackedAreaChartData = stackedAreaChartData;
           this.stackedAreaChartOptions = {
               name: 'Predicted bad debt loss',
@@ -134,21 +146,72 @@ export class ChurnPredictionComponent implements OnInit {
 
       }
 
-    
+     
+
       updateFilter(event) {
         const val = event.target.value;
 
-        // filter our data
-        const temp = this.temp.filter(function(d) {
-          return d.name.toLowerCase().indexOf(val) !== -1 || !val;
-        });
+      
+        this.getArticles(val);
+  
+      
+      
+        
 
-        // update the rows
-        this.rows = temp;
+       
       }
 
 
+      
 
+      getArticles(query)
+      {
+
+
+        var temRes= [];
+
+
+        this._http.get('http://ec2-18-194-232-155.eu-central-1.compute.amazonaws.com:1234/api/stat?polarity=positive&query='+query+'&page=1').subscribe((data) => {
+
+            
+
+
+            this.percentage = [
+                {
+                    "label": "Pro "+query,
+                    "value": data["meta"]["pro"]
+                },
+                {
+                    "label": "Contra " +query,
+                    "value": data["meta"]["contra"]
+                }
+            ];
+
+
+            data["data"].forEach(element => {
+
+                    element["sentences"].forEach(element1 => {
+                        if('keys' in element1 && temRes.indexOf({"opinion":element1["sentence"]})==-1)
+                        {
+                            console.log(element1);
+                            temRes.push({"opinion":element1["sentence"]});
+                        }
+                    });
+                
+            });
+
+
+            this.rows = temRes;
+            console.log( temRes);
+           
+            
+
+
+        });
+
+
+
+      }
 
 
 

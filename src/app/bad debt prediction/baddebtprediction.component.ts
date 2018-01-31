@@ -97,6 +97,7 @@ export class BadDebtPredictionComponent implements OnInit {
 
 
               this.rows  = this.badDebtData[0]['baddebtlist'];
+              this.temp = data[0]['baddebtlist']
               //this.stackedAreaChartData = this.badDebtData[0]['predictedlos'];
               this.stackedAreaChartData = stackedAreaChartData;
 
