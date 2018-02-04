@@ -165,7 +165,7 @@ export class NLPComponent implements OnInit {
         const val = event.target.value;
 
       
-        this.getArticles(val);
+        
   
       
       
@@ -174,8 +174,25 @@ export class NLPComponent implements OnInit {
        
       }
 
+      analyseQuery:string;
 
-      
+     
+
+      foods = [
+         {value: 'negative', viewValue: 'Negative'},
+         {value: 'positive', viewValue: 'Positive'}
+        
+      ];
+
+      selectedValue="positive";
+
+      requestAnalyse()
+      {
+          this.getArticles(this.analyseQuery);
+         
+
+      }
+
 
       getArticles(query)
       {
@@ -184,7 +201,7 @@ export class NLPComponent implements OnInit {
         var temRes= [];
 
 
-        this._http.get('http://ec2-18-194-232-155.eu-central-1.compute.amazonaws.com:1234/api/stat?polarity=positive&query='+query+'&page=1').subscribe((data) => {
+        this._http.get('http://ec2-18-194-232-155.eu-central-1.compute.amazonaws.com:1234/api/stat?polarity='+this.selectedValue+'&query='+query+'&page=1').subscribe((data) => {
 
             
 
