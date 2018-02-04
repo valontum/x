@@ -3,6 +3,7 @@ const router = express.Router();
 var fs = require('file-system');
 var MongoClient = require('mongodb').MongoClient , assert = require('assert');
 var randomstring = require("randomstring");
+const http = require('http');
 // Connection URL
 var url = 'mongodb://fin:leavemealone@ds121726.mlab.com:21726/finpredict';
 
@@ -218,6 +219,45 @@ router.get('/baddebtinfo', auth, (req, res, next) => {
 
 });
 
+
+
+
+
+router.get('/nlpanalyse', auth, (req, res, next) => {
+
+
+
+  
+    
+
+
+    http.get('http://ec2-18-194-232-155.eu-central-1.compute.amazonaws.com:1234/api/stat?polarity='+req.query.polarity+'&query='+req.query.query+'&page=1', (resp) => {
+        let data = '';
+       
+        // A chunk of data has been recieved.
+        resp.on('data', (chunk) => {
+          data += chunk;
+        });
+       
+        // The whole response has been received. Print out the result.
+        resp.on('end', () => {
+          
+            res.json(data);
+        });
+       
+      }).on("error", (err) => {
+      
+        console.log("Error: " + err.message);
+      
+      });
+      
+      
+
+
+    
+
+
+});
 
 
 

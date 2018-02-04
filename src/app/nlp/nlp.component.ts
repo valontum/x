@@ -7,7 +7,7 @@ import {ReaderChurnService} from '../services/readerchurn/readerchurnservice'
 import { HttpClient } from '@angular/common/http';
 import { CustomValidators } from 'ng2-validation';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
-
+import {environment} from '../../environments/environment';
 
 @Component({
     selector: 'ms-nlp',
@@ -201,7 +201,7 @@ export class NLPComponent implements OnInit {
         var temRes= [];
 
 
-        this._http.get('http://ec2-18-194-232-155.eu-central-1.compute.amazonaws.com:1234/api/stat?polarity='+this.selectedValue+'&query='+query+'&page=1').subscribe((data) => {
+        this._http.get(environment.address+'/nlpanalyse?polarity='+this.selectedValue+'&query='+query).subscribe((data) => {
 
             
 
