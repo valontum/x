@@ -21,18 +21,18 @@ const MENUITEMS = [
     type: 'link',
     icon: 'dashboard'
   },
-    //{
-     //   state: 'newprediction',
-     //   name: 'New Prediction',
-     //   type: 'link',
-    //    icon: 'functions'
-   // },
-  // {
-   // state: 'nlp',
-   // name: 'NLP',
-   // type: 'link',
-    //icon: 'texture'
-//},
+    {
+        state: 'newprediction',
+        name: 'New Prediction',
+       type: 'link',
+      icon: 'functions'
+   },
+   {
+    state: 'nlp',
+    name: 'NLP',
+    type: 'link',
+    icon: 'texture'
+},
     {
         state: 'transactions',
         name: 'Subscriptions',

@@ -5,6 +5,8 @@ import { stackedAreaChartData } from '../data/stackedAreaChart.data';
 import {churnPredictionBasedOnCompanies} from '../data/widgetDemoData.data';
 import {ReaderChurnService} from '../services/readerchurn/readerchurnservice'
 import { HttpClient } from '@angular/common/http';
+import { CustomValidators } from 'ng2-validation';
+import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 
 
 @Component({
@@ -87,7 +89,7 @@ export class NLPComponent implements OnInit {
         }
     };
 
-      constructor(private pageTitleService: PageTitleService, private readerChurnService: ReaderChurnService, private _http: HttpClient) {
+      constructor(private fb: FormBuilder, private pageTitleService: PageTitleService, private readerChurnService: ReaderChurnService, private _http: HttpClient) {
 
 
 
@@ -132,6 +134,7 @@ export class NLPComponent implements OnInit {
 
 
       }
+      public form: FormGroup;
 
       ngOnInit() {
         this.pageTitleService.setTitle("NLP Analysis");
@@ -141,7 +144,17 @@ export class NLPComponent implements OnInit {
           };
 
 
-
+          this.form = this.fb.group({
+            fname: [null, Validators.compose([Validators.required, Validators.minLength(5), Validators.maxLength(10)])],
+            email: [null, Validators.compose([Validators.required, CustomValidators.email])],
+            range: [null, Validators.compose([Validators.required, CustomValidators.range([5, 9])])],
+            url: [null, Validators.compose([Validators.required, CustomValidators.url])],
+            date: [null, Validators.compose([Validators.required, CustomValidators.date])],
+            creditCard: [null, Validators.compose([Validators.required, CustomValidators.creditCard])],
+            phone: [null, Validators.compose([Validators.required, CustomValidators.phone('en-US')])],
+            gender: [null, Validators.required]
+           
+        });
 
 
       }

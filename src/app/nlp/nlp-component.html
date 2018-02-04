@@ -10,10 +10,69 @@
         </md-card>
     </div>
 
+    <div fxFlex="100%" fxFlex.md="49.5%" fxFlex.sm="100%" fxFlex.gt-md >
+        <md-card>
+           
+                <md-input-container class="full-wid">
+                   <input mdInput type="text" placeholder='Analyse a topic...' (keyup)='updateFilter($event)' /> </md-input-container>
+                  <div align="right">
+                     <div style="display: inline-block; margin-right: 30px;">
+                      <form>
+                          <md-select placeholder="Sentiment" [(ngModel)]="selectedValue" name="food">
+                              <md-option *ngFor="let food of foods" [value]="food.value">
+                                  {{food.viewValue}}
+                              </md-option>
+                          </md-select>
+                          
+                      </form>
+                    </div>
+                    <div style="display: inline-block;">
+                       <button class="mat-raised-button mat-primary" color="primary" md-raised-button="" type="submit" ng-reflect-color="primary"><span class="mat-button-wrapper">Analyse</span><div class="mat-button-ripple mat-ripple" md-ripple="" ng-reflect-trigger="[object HTMLButtonElement]" ng-reflect-centered="false" ng-reflect-disabled="false"></div><div class="mat-button-focus-overlay"></div></button>
+                    </div>
+                    </div>
+                  
+                   
+                
+                  
+        </md-card>
+    </div>
+
     
 
 
+</div>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div fxLayout="row" fxLayoutWrap="wrap" fxLayoutAlign="start" *ngIf='this.churnData != null'>
 
 
 
@@ -22,27 +81,8 @@
 
 
    <div fxFlex="100">
-        <div class="gene-welcome-note pad-wrap">
-                <h2 class="ng-tns-c10-3">Opinion Search</h2>
-                <p class="ng-tns-c10-3">Search opinions towards a specific entity/keyword.</p>
-            </div>
-     <div class="pad-all-md mat-white box-inset mrgn-b-sm">
-      <md-input-container class="full-wid">
-         <input mdInput type="text" placeholder='Type to filter the name column...' (keyup)='updateFilter($event)' /> </md-input-container>
-         <div class="gene-card-content">
-            <p class="mrgn-b-lg">Select buttons allow the user to select one option from a set</p>
-            <form>
-                <md-select placeholder="Favorite food" [(ngModel)]="selectedValue" name="food">
-                    <md-option *ngFor="let food of foods" [value]="food.value">
-                        {{food.viewValue}}
-                    </md-option>
-                </md-select>
-                <p> Selected value: {{selectedValue}} </p>
-            </form>
-        </div>
-      
-      
-        </div>
+        
+    
       <ngx-datatable #table class='material' [columns]="columns" [columnMode]="'force'" [headerHeight]="50" [footerHeight]="50" [rowHeight]="'auto'" [limit]="10" [rows]="rows"> </ngx-datatable>
    </div>
 </div>
