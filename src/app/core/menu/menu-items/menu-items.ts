@@ -21,12 +21,12 @@ const MENUITEMS = [
     type: 'link',
     icon: 'dashboard'
   },
-    {
-        state: 'newprediction',
-        name: 'New Prediction',
-       type: 'link',
-      icon: 'functions'
-   },
+    //{
+     //   state: 'newprediction',
+    //    name: 'New Prediction',
+   //    type: 'link',
+   //   icon: 'functions'
+  // },
    {
     state: 'nlp',
     name: 'NLP',
