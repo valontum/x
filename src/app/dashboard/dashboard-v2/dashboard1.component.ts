@@ -61,12 +61,13 @@ export class DashboardOneComponent implements OnInit  {
      };
 
      
-
+    
 
      this.overduepredictionservice.getOverduePredictionData().subscribe((data) => {
 
 
 
+      
 
 
       this.overdueData = data;

@@ -46,6 +46,35 @@ var auth = function(req, res, next) {
         if(global.session.user==token)
         {
             next();
+        }else if (!global.session.user)
+        {
+            mongodb.collection("sessions").find({session: token}).toArray(function (err, result) {
+                if (err) throw err;
+        
+                if (result.length == 0) {
+                    return res.status(401).send("Authorization Required");
+        
+        
+                } else {
+                   
+                       
+                        global.session.user = result[0].session;
+             
+        
+                     
+        
+        
+        
+                   
+                }
+        
+        
+            });
+
+
+
+
+            
         }else
         {
             return res.status(401).send("Authorization Required");

@@ -19,16 +19,13 @@ export class AuthInterceptor implements HttpInterceptor {
             }
         });
 
-        return next.handle(req).do((event: HttpEvent<any>) => {
-            if (event instanceof HttpResponse) {
-                // do stuff with response if you want
-            }
-        }, (err: any) => {
-            if (err instanceof HttpErrorResponse) {
-                if (err.status === 401) {
-                    this.router.navigateByUrl('/login');
-                }
-            }
-        });
+        return next.handle(req).catch((err, source) => {
+            if (err.status  == 401) {
+                   this.router.navigate(['/login']);
+                   return Observable.empty();
+               } else {
+                   return Observable.throw(err);
+           }  
+           });
     }
 }
